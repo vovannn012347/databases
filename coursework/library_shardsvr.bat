@@ -1,0 +1,1 @@
+"c:\Program Files\MongoDB\Server\3.4\bin\mongos.exe" --configdb rs0/localhost:27019 --port 27100

@@ -1,0 +1,1 @@
+"c:\Program Files\MongoDB\Server\3.4\bin\mongod.exe" --port 28017 --dbpath "d:\Learning\University\5 sem\databases\lab2\coursework\library_files1" --shardsvr --replSet rs0

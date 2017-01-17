@@ -1,0 +1,29 @@
+{% extends 'library/base.html' %}
+
+{% load bootstrap3 %}
+{% load static %}
+
+
+
+{% block content %}
+    <div class="container">
+        <a href="{% url 'library:index' %}">main page</a>
+        <div class="page-header">
+            <h1 class="text-center panel-title">{% block title %}Login{% endblock %}</h1>
+        </div>
+    {% if errors %}<p><strong>{{ errors }}</strong></p>{% endif %}
+
+        <div class="panel-body">
+            <form action="{% url 'library:login' %}" method="post" class="form">
+                {% csrf_token %}
+                {% bootstrap_form form %}
+                {% buttons %}
+                    <button type="submit" class="btn btn-primary">
+                        Login
+                    </button>
+                {% endbuttons %}
+            </form>
+        </div>
+
+    </div>
+{% endblock content %}

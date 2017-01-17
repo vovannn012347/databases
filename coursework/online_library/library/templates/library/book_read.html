@@ -1,0 +1,16 @@
+{% extends 'library/base.html' %}
+
+{% load bootstrap3 %}
+{% load book_extras %}
+{% load static %}
+{% load staticfiles %}
+
+{% block local_styles %}
+    <link rel="stylesheet" href="{% static 'Library/book_view.css' %}">
+{% endblock local_styles %}
+
+{% block content %}
+        <div class="document-container" height='1050px'>
+            <embed src="/media/files/{{ book.content }}" type='{{book.content_type}}' height='1050px' width='100%' >
+        </div>
+{% endblock content %}

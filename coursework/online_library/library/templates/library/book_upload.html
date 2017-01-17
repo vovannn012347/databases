@@ -1,0 +1,31 @@
+{% extends 'library/base.html' %}
+
+{% load bootstrap3 %}
+{% load static %}
+
+{% block local_styles %}
+    <link rel="stylesheet" href="{% static 'Library/book_upload.css' %}">
+{% endblock local_styles %}
+
+{% block content %}
+    <div class="container">
+        <a href="{% url 'library:index' %}">main page</a>
+        <div class="page-header">
+            <h1 class="text-center panel-title">{% block title %}Upload a book{% endblock %}</h1>
+        </div>
+    {% if errors %}<p><strong>{{ errors }}</strong></p>{% endif %}
+
+        <div class="panel-body">
+            <form action="{% url 'library:upload' %}" enctype="multipart/form-data" method="post" class="form">
+                {% csrf_token %}
+                {% bootstrap_form form %}
+                {% buttons %}
+                    <button type="submit" class="btn btn-primary">
+                        Upload book
+                    </button>
+                {% endbuttons %}
+            </form>
+        </div>
+
+    </div>
+{% endblock content %}

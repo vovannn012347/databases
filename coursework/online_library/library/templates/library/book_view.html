@@ -1,0 +1,46 @@
+{% extends 'library/base.html' %}
+
+{% load bootstrap3 %}
+{% load book_extras %}
+{% load static %}
+{% load staticfiles %}
+
+{% block local_styles %}
+    <link rel="stylesheet" href="{% static 'Library/book_view.css' %}">
+{% endblock local_styles %}
+
+{% block content %}
+    <div class="container">
+        <a href="{% url 'library:index' %}">Main page </a>
+
+        {% if book.created_by.name == user.username %}
+        <a href="{% url 'library:book_edit' book|object_id %}">Edit</a>
+        {% endif %}
+
+        <div class="page-header">
+            <h1 class="text-center panel-title">{{book.name}}</h1>
+        </div>
+
+
+        {% if book.image %}
+        <div class="Image-container">
+            <img src="/media/images/{{ book.image }}" type='{{book.image_type}}'>
+        </div>
+        {% endif %}
+
+        <div class="panel-body">
+            <tr>Author: {{book.author}}</tr>
+            <br>
+            <tr>Rating: {{book.rate}}</tr>
+            <br>
+            <tr>description:<br> {{book.description}}</tr>
+            <br>
+        </div>
+
+        {% if book.content %}
+        <div class="document-container" height='1050px'>
+            <embed src="/media/files/{{ book.content }}" type='{{book.content_type}}' height='1050px' width='100%' >
+        </div>
+        {% endif %}
+    </div>
+{% endblock content %}
